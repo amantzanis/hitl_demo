@@ -94,6 +94,7 @@ def main():
             # evaluate (you should provide X_test and y_test)
             loss, acc = loaded_model.evaluate(X_test, y_test)
             score[i] = acc
+            st.write(score)
             
             # update model
             fingerprint = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
