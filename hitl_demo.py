@@ -110,7 +110,7 @@ def main():
     if st.button("Plot Experiment", key=f"plot_button_{i}"):
         data = [0.83] + list(score.values())
         # Labels for the bars
-        labels = ["Initial", "1st Retraining", "2nd Retraining"]
+        labels = ["Initial", "1st Retraining"]
         
         # bar plot
         plt.bar(range(len(data)), data, tick_label=labels)
