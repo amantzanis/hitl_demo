@@ -100,29 +100,13 @@ def main():
                 # evaluate (you should provide X_test and y_test)
                 loss, acc = loaded_model.evaluate(X_test, y_test)
                 score[i] = acc
+                st.text(f"Model accuracy before retraining: 0.83")
                 st.text(f"Model accuracy after retraining: {acc:.2f}")
                 
                 # update model
                 fingerprint = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
                 new_name = "/heart_disease_model" + "_" + fingerprint + ".h5"
                 loaded_model.save(path + new_name)
-
-    if st.button("Plot Experiment", key=f"plot_button_{i}"):
-        data = [0.83] + list(score.values())
-        # Labels for the bars
-        labels = ["Initial", "1st Retraining"]
-        
-        # bar plot
-        plt.bar(range(len(data)), data, tick_label=labels)
-        
-        # Add labels and title
-        plt.xlabel("Experiments")
-        plt.ylabel("Accuracy")
-        plt.title("Bar Plot of Model Accuracy in 'noisy' AL")
-        
-        # Add text labels on the bars
-        for i, v in enumerate(data):
-            plt.text(i, v, str(round(v, 2)), ha="center", va="bottom")
 
 if __name__ == "__main__":
     main()
