@@ -30,6 +30,9 @@ loaded_data = np.load(path + "/test_data.npz")
 X_test = loaded_data["X_test"]
 y_test = loaded_data["y_test"]
 
+# global df variable for labeling results
+df = None
+
 def add_labels(df):
     l = []
 
