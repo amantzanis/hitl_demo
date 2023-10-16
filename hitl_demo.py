@@ -71,6 +71,7 @@ def main():
     score = {}
     s = 0
     X, y = None, None
+    data = []
     for i, j in enumerate([batch1, batch2]):
         if s == 0:  # if in the first loop
             # Load the model
