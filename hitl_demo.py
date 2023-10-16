@@ -25,6 +25,11 @@ batch4 = labeled[50:].copy()
 # load model
 model = tf.keras.models.load_model(path + "/heart_disease_model.h5")
 
+# load test data
+loaded_data = np.load(path + "/test_data.npz")
+X_test = loaded_data["X_test"]
+y_test = loaded_data["y_test"]
+
 def add_labels(df):
     l = []
     i = 0
