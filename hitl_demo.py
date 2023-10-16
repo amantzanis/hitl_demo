@@ -70,7 +70,6 @@ def main():
     st.title("Heart Disease Model Active Learning Demo App")
     score = {}
     s = 0
-    # X, y = None, None
     data = []
     for i, j in enumerate([batch1, batch2]):
         if s == 0:  # if in the first loop
@@ -82,8 +81,8 @@ def main():
         s += 1
         
         # label new data
-        if st.button("Label Data", key=f"label_button_{i}"):
-            df = add_labels(j)
+        # if st.button("Label Data", key=f"label_button_{i}"):
+        df = add_labels(j)
         
         # retrain
         if st.button("Retrain Model", key=f"retrain_button_{i}"):
