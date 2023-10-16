@@ -22,6 +22,11 @@ batch2 = unlabeled[50:].copy()
 batch3 = labeled[:50].copy()
 batch4 = labeled[50:].copy()
 
+# load test data
+loaded_data = np.load(path + "/test_data.npz")
+X_test = loaded_data["X_test"]
+y_test = loaded_data["y_test"]
+
 # global df variable for labeling results
 df = None
 
