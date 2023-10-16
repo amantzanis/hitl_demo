@@ -70,7 +70,7 @@ def main():
     st.title("Heart Disease Model Active Learning Demo App")
     score = {}
     s = 0
-    X, y = None, None
+    # X, y = None, None
     data = []
     for i, j in enumerate([batch1, batch2]):
         if s == 0:  # if in the first loop
@@ -88,7 +88,7 @@ def main():
             y = df["target"]
         
         # retrain
-        if st.button("Retrain Model", key=f"retrain_button_{i}") and X is not None and y is not None:
+        if st.button("Retrain Model", key=f"retrain_button_{i}"):
             st.text("Retraining Model...")  # Display a message indicating retraining
             loaded_model.fit(X, y, epochs=10, batch_size=32)
             
