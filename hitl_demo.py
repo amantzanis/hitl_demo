@@ -27,13 +27,20 @@ model = tf.keras.models.load_model(path + "/heart_disease_model.h5")
 
 def add_labels(df):
     l = []
-    for i in range(len(df)):
+    i = 0
+    while i < len(df):
         st.write(df.iloc[i].values)
         st.write("\n")
         st.write("Please label this instance either 1 or 0")
         key = f"label_{i}"  # Create a unique key for each widget
         x = st.number_input("Label", min_value=0, max_value=1, step=1, key=key)
         l.append(x)
+        i += 1
+        if i < len(df):
+            if st.button("Next Instance"):
+                st.empty()  # Clear the current content
+            else:
+                break
 
     df["target"] = pd.Series(l)
     return df
