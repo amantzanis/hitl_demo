@@ -69,8 +69,8 @@ def load_latest(path):
 
 def main():
     st.title("Streamlit Heart Disease Model Active Learning Demo App")
+    score = {}
     if st.button("Train"):
-        score = {}
         s = 0
         for i, j in enumerate([batch1, batch2]):
             if s == 0:  # if in the first loop
