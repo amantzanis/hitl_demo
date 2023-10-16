@@ -87,7 +87,7 @@ def main():
             y = df["target"]
         
         # retrain
-        if st.button("Retrain Model", key=f"retrain_button_{i}"):
+        if st.button("Retrain Model", key=f"retrain_button_{i}") and X is not None and y is not None:
             loaded_model.fit(X, y, epochs=10, batch_size=32)
         
             # evaluate (you should provide X_test and y_test)
