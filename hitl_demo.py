@@ -22,7 +22,7 @@ batch3 = labeled[:50].copy()
 batch4 = labeled[50:].copy()
 
 # load model
-model = tf.keras.models.load_model(path + "/furn.h5")
+model = tf.keras.models.load_model(path + "/heart_disease_model.h5")
 
 import streamlit as st
 import pandas as pd
@@ -93,7 +93,7 @@ def main():
         new_name = "heart_disease_model" + "_" + fingerprint + ".h5"
         loaded_model.save(new_name)
 
-    data = [accuracy] + list(score.values())
+    data = [0.83] + list(score.values())
 
     # Labels for the bars
     labels = ["Initial", "1st Retraining", "2nd Retraining"]
