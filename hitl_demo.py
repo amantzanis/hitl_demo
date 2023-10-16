@@ -89,12 +89,13 @@ def main():
         
         # retrain
         if st.button("Retrain Model", key=f"retrain_button_{i}") and X is not None and y is not None:
+            st.text("Retraining Model...")  # Display a message indicating retraining
             loaded_model.fit(X, y, epochs=10, batch_size=32)
-        
+            
             # evaluate (you should provide X_test and y_test)
             loss, acc = loaded_model.evaluate(X_test, y_test)
             score[i] = acc
-            st.write(score)
+            st.text(f"Model accuracy after retraining: {acc:.2f}")
             
             # update model
             fingerprint = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
