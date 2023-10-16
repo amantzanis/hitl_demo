@@ -34,25 +34,25 @@ def add_labels(df):
     l = []
     current_instance = 0  # Track the current instance
     
-        while current_instance < len(df):
-            st.text("Data Instance:")
-            st.write(df.iloc[current_instance])  # Display the data instance
-            st.text("Please label this instance either 1 or 0")
-        
-            # Generate a unique key based on the loop index
-            input_key = f"label_{current_instance}"
-        
-            # Use a Streamlit number_input widget with a unique key
-            x = st.number_input("Label", min_value=0, max_value=1, step=1, key=input_key)
-            l.append(x)
-        
-            # Add a "Next" button to move to the next instance
-            if st.button("Next"):
-                current_instance += 1
+    while current_instance < len(df):
+        st.text("Data Instance:")
+        st.write(df.iloc[current_instance])  # Display the data instance
+        st.text("Please label this instance either 1 or 0")
     
-        df["target"] = pd.Series(l)
+        # Generate a unique key based on the loop index
+        input_key = f"label_{current_instance}"
     
-        return df
+        # Use a Streamlit number_input widget with a unique key
+        x = st.number_input("Label", min_value=0, max_value=1, step=1, key=input_key)
+        l.append(x)
+    
+        # Add a "Next" button to move to the next instance
+        if st.button("Next"):
+            current_instance += 1
+    
+    df["target"] = pd.Series(l)
+
+    return df
 
 
 def load_latest(path):
