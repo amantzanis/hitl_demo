@@ -33,27 +33,22 @@ df = None
 def add_labels(df):
     l = []
     current_instance = 0
+    total_instances = len(df)
 
-    st.text("Data Instance:")
-    st.write(df.iloc[current_instance])
-    st.text("Please label this instance either 1 or 0")
+    while current_instance < total_instances:
+        st.text("Data Instance:")
+        st.write(df.iloc[current_instance])
+        st.text("Please label this instance either 1 or 0")
 
-    input_key = f"label_{current_instance}"
-    x = st.number_input("Label", min_value=0, max_value=1, step=1, key=input_key)
-    l.append(x)
+        input_key = f"label_{current_instance}"
+        x = st.number_input("Label", min_value=0, max_value=1, step=1, key=input_key)
+        l.append(x)
 
-    next_button = st.button("Next")
+        # Add a "Next" button to move to the next instance
+        next_button = st.button("Next")
 
-    if next_button:
-        current_instance += 1
-        if current_instance < len(df):
-            st.text("Data Instance:")
-            st.write(df.iloc[current_instance])
-            st.text("Please label this instance either 1 or 0")
-
-            input_key = f"label_{current_instance}"
-            x = st.number_input("Label", min_value=0, max_value=1, step=1, key=input_key)
-            l.append(x)
+        if next_button:
+            current_instance += 1
 
     df["target"] = pd.Series(l)
 
