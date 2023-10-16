@@ -70,33 +70,34 @@ def load_latest(path):
 def main():
     st.title("Heart Disease Model Active Learning Demo App")
     score = {}
-    if st.button("Train"):
-        s = 0
-        for i, j in enumerate([batch1, batch2]):
-            if s == 0:  # if in the first loop
-                # Load the model
-                loaded_model = tf.keras.models.load_model("heart_disease_model.h5")
-            else:  # load the latest model
-                latest = load_latest(path)
-                loaded_model = tf.keras.models.load_model(latest)
-            s += 1
-            
-            # label new data
+    s = 0
+    for i, j in enumerate([batch1, batch2]):
+        if s == 0:  # if in the first loop
+            # Load the model
+            loaded_model = tf.keras.models.load_model("heart_disease_model.h5")
+        else:  # load the latest model
+            latest = load_latest(path)
+            loaded_model = tf.keras.models.load_model(latest)
+        s += 1
+        
+        # label new data
+        if st.button("Label Data"):
             df = add_labels(j)
-            X = df.drop("target", axis=1)
-            y = df["target"]
-            
-            # retrain
+        X = df.drop("target", axis=1)
+        y = df["target"]
+        
+        # retrain
+        if st.button("Retrain Model"):
             loaded_model.fit(X, y, epochs=10, batch_size=32)
-            
-            # evaluate (you should provide X_test and y_test)
-            loss, acc = loaded_model.evaluate(X_test, y_test)
-            score[i] = acc
-            
-            # update model
-            fingerprint = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-            new_name = "heart_disease_model" + "_" + fingerprint + ".h5"
-            loaded_model.save(new_name)
+        
+        # evaluate (you should provide X_test and y_test)
+        loss, acc = loaded_model.evaluate(X_test, y_test)
+        score[i] = acc
+        
+        # update model
+        fingerprint = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        new_name = "/heart_disease_model" + "_" + fingerprint + ".h5"
+        loaded_model.save(path + new_name)
 
     data = [0.83] + list(score.values())
 
