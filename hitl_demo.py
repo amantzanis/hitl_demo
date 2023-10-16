@@ -40,7 +40,7 @@ def add_labels(df):
         st.write(df.iloc[current_instance])
         st.text("Please label this instance either 1 or 0")
 
-        input_key = f"label_{current_instance}"
+        input_key = f"label_{current_instance}"  # Ensure unique keys
         x = st.number_input("Label", min_value=0, max_value=1, step=1, key=input_key)
         l.append(x)
 
@@ -53,7 +53,6 @@ def add_labels(df):
     df["target"] = pd.Series(l)
 
     return df
-
 
 def load_latest(path):
     date_format = "%Y-%m-%d %H:%M:%S"
