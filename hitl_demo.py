@@ -32,22 +32,18 @@ y_test = loaded_data["y_test"]
 
 def add_labels(df):
     l = []
-    i = 0
-    while i < len(df):
+
+    for i in range(len(df)):
         st.write(df.iloc[i].values)
         st.write("\n")
         st.write("Please label this instance either 1 or 0")
-        input_key = f"label_{i}_{datetime.datetime.now().strftime('%f')}"
-        x = st.number_input("Label", min_value=0, max_value=1, step=1, key=input_key)
+        
+        # Use a Streamlit number_input widget to get the user's input
+        x = st.number_input("Label", min_value=0, max_value=1, step=1)
         l.append(x)
-        button_key = f"button_{i}"  # Create a unique key for the button
-        if st.button("Next Instance", key=button_key):
-            st.empty()  # Clear the current content
-        else:
-            break
-        i += 1
 
     df["target"] = pd.Series(l)
+
     return df
 
 def load_latest(path):
