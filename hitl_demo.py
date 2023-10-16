@@ -71,6 +71,7 @@ def main():
     score = {}
     s = 0
     data = []
+    df = None
     for i, j in enumerate([batch1, batch2]):
         if s == 0:  # if in the first loop
             # Load the model
@@ -82,6 +83,7 @@ def main():
         
         # label new data
         if st.button("Label Data", key=f"label_button_{i}"):
+            global df
             df = add_labels(j)
         
         # retrain
