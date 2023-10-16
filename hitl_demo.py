@@ -24,20 +24,14 @@ batch4 = labeled[50:].copy()
 # load model
 model = tf.keras.models.load_model(path + "/heart_disease_model.h5")
 
-import streamlit as st
-import pandas as pd
-import os
-import datetime
-import tensorflow as tf
-import matplotlib.pyplot as plt
-
 def add_labels(df):
     l = []
     for i in range(len(df)):
         st.write(df.iloc[i].values)
         st.write("\n")
         st.write("Please label this instance either 1 or 0")
-        x = st.number_input("Label", min_value=0, max_value=1, step=1)
+        key = f"label_{i}"  # Create a unique key for each widget
+        x = st.number_input("Label", min_value=0, max_value=1, step=1, key=key)
         l.append(x)
 
     df["target"] = pd.Series(l)
