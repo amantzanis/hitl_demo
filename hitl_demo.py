@@ -79,7 +79,11 @@ def main():
         s += 1
         
         # label new data
-        if st.button("Label Data"):
+        
+        # Generate a unique key for the "Label Data" button
+        label_data_button_key = f"label_data_button_{i}"
+        
+        if st.button("Label Data", key=label_data_button_key):
             df = add_labels(j)
             X = df.drop("target", axis=1)
             y = df["target"]
