@@ -66,9 +66,11 @@ def load_latest(path):
     return latest
 
 def main():
+    
     st.title("Heart Disease Model Active Learning Demo App")
     score = {}
     s = 0
+    X, y = None, None
     for i, j in enumerate([batch1, batch2]):
         if s == 0:  # if in the first loop
             # Load the model
