@@ -32,11 +32,12 @@ y_test = loaded_data["y_test"]
 
 def add_labels(df):
     l = []
+    displayed_text = st.empty()  # Create an empty element to display text
 
     for i in range(len(df)):
-        st.write(df.iloc[i].values)
-        st.write("\n")
-        st.write("Please label this instance either 1 or 0")
+        displayed_text.text(df.iloc[i].values)  # Update the displayed text
+        displayed_text.text("\n")
+        displayed_text.text("Please label this instance either 1 or 0")
         
         # Generate a unique key based on the loop index
         input_key = f"label_{i}"
