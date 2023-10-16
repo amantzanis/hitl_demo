@@ -56,13 +56,11 @@ def load_latest(path):
     for i in os.listdir(path):
         if "h5" in i:
             date = i.split(".")[0].split("_")[-1]
-            st.write(date)
             try:
                 date_obj = datetime.datetime.strptime(date, date_format)
             except:
                 continue
             l.append(date_obj)
-    sorted(l)
     latest = "heart_disease_model_" + str(sorted(l)[0]) + ".h5"
 
     return latest
