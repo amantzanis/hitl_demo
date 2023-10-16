@@ -101,7 +101,7 @@ def main():
             new_name = "/heart_disease_model" + "_" + fingerprint + ".h5"
             loaded_model.save(path + new_name)
 
-        if st.button("Plot Experiment"):
+        if st.button("Plot Experiment", key=f"plot_button_{i}"):
             data = [0.83] + list(score.values())
             # Labels for the bars
             labels = ["Initial", "1st Retraining", "2nd Retraining"]
