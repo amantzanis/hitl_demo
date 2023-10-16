@@ -32,23 +32,18 @@ df = None
 
 def add_labels(df):
     l = []
-    current_instance = 0
-    total_instances = len(df)
 
-    while current_instance < total_instances:
+    for i in range(len(df)):
         st.text("Data Instance:")
-        st.write(df.iloc[current_instance])
+        st.write(df.iloc[i])  # Display the data instance
         st.text("Please label this instance either 1 or 0")
 
-        input_key = f"label_{current_instance}"  # Ensure unique keys
+        # Generate a unique key based on the loop index
+        input_key = f"label_{i}"
+
+        # Use a Streamlit number_input widget with a unique key
         x = st.number_input("Label", min_value=0, max_value=1, step=1, key=input_key)
         l.append(x)
-
-        # Add a "Next" button to move to the next instance
-        next_button = st.button("Next")
-
-        if next_button:
-            current_instance += 1
 
     df["target"] = pd.Series(l)
 
