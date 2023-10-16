@@ -79,7 +79,7 @@ def main():
             loaded_model = tf.keras.models.load_model("heart_disease_model.h5")
         else:  # load the latest model
             latest = load_latest(path)
-            loaded_model = tf.keras.models.load_model("heart_disease_model.h5")
+            loaded_model = tf.keras.models.load_model(latest)
         s += 1
         
         # label new data
