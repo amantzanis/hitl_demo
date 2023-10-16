@@ -79,13 +79,13 @@ def main():
         s += 1
         
         # label new data
-        if st.button("Label Data"):
+        if st.button("Label Data", key=f"label_button_{i}"):
             df = add_labels(j)
             X = df.drop("target", axis=1)
             y = df["target"]
         
         # retrain
-        if st.button("Retrain Model"):
+        if st.button("Retrain Model", key=f"retrain_button_{i}"):
             loaded_model.fit(X, y, epochs=10, batch_size=32)
         
             # evaluate (you should provide X_test and y_test)
