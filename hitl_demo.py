@@ -78,7 +78,6 @@ def main():
             # Load the model
             loaded_model = tf.keras.models.load_model("heart_disease_model.h5")
         else:  # load the latest model
-            path = "/Users/asteriosmantzanis/SXAIPI/"
             latest = load_latest(path)
             loaded_model = tf.keras.models.load_model("heart_disease_model.h5")
         s += 1
