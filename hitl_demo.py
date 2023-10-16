@@ -102,9 +102,18 @@ def main():
 
     # Labels for the bars
     labels = ["Initial", "1st Retraining", "2nd Retraining"]
-
-    # Bar plot
-    st.bar_chart(data, labels=labels)
+    
+    # bar plot
+    plt.bar(range(len(data)), data, tick_label=labels)
+    
+    # Add labels and title
+    plt.xlabel("Experiments")
+    plt.ylabel("Accuracy")
+    plt.title("Bar Plot of Model Accuracy in 'noisy' AL")
+    
+    # Add text labels on the bars
+    for i, v in enumerate(data):
+        plt.text(i, v, str(round(v, 2)), ha="center", va="bottom")
 
 if __name__ == "__main__":
     main()
