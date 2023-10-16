@@ -99,7 +99,8 @@ def main():
             new_name = "/heart_disease_model" + "_" + fingerprint + ".h5"
             loaded_model.save(path + new_name)
 
-    data = [0.83] + list(score.values())
+            data = [0.83] + list(score.values())
+            st.write(data)
 
     if st.button("Plot Experiment"):
         # Labels for the bars
