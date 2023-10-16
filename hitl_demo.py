@@ -64,7 +64,7 @@ def load_latest(path):
     return latest
 
 def main():
-    st.title("Streamlit Heart Disease Model Retraining App")
+    st.title("Streamlit Heart Disease Model Active Learning Demo App")
     
     score = {}
     s = 0
