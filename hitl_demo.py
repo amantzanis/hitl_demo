@@ -32,16 +32,15 @@ y_test = loaded_data["y_test"]
 
 def add_labels(df):
     l = []
-    displayed_text = st.empty()  # Create an empty element to display text
 
     for i in range(len(df)):
-        displayed_text.text(df.iloc[i].values)  # Update the displayed text
-        displayed_text.text("\n")
-        displayed_text.text("Please label this instance either 1 or 0")
-        
+        st.text("Data Instance:")
+        st.write(df.iloc[i])  # Display the data instance
+        st.text("Please label this instance either 1 or 0")
+
         # Generate a unique key based on the loop index
         input_key = f"label_{i}"
-        
+
         # Use a Streamlit number_input widget with a unique key
         x = st.number_input("Label", min_value=0, max_value=1, step=1, key=input_key)
         l.append(x)
