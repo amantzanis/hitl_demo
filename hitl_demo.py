@@ -37,15 +37,15 @@ def add_labels(df):
         st.write(df.iloc[i].values)
         st.write("\n")
         st.write("Please label this instance either 1 or 0")
-        key = f"label_{i}"  # Create a unique key for each widget
-        x = st.number_input("Label", min_value=0, max_value=1, step=1, key=key)
+        input_key = f"label_{i}"  # Create a unique key for the number_input
+        x = st.number_input("Label", min_value=0, max_value=1, step=1, key=input_key)
         l.append(x)
+        button_key = f"button_{i}"  # Create a unique key for the button
+        if st.button("Next Instance", key=button_key):
+            st.empty()  # Clear the current content
+        else:
+            break
         i += 1
-        if i < len(df):
-            if st.button("Next Instance"):
-                st.empty()  # Clear the current content
-            else:
-                break
 
     df["target"] = pd.Series(l)
     return df
