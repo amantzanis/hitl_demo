@@ -1,3 +1,2 @@
 # hitl_demo
-
-https://hitldemo-c5vmch78pbdj6pner4jady.streamlit.app/
+https://hitldemo-me63ptuw8c6kgj2p2k7mdf.streamlit.app/
