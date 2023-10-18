@@ -10,6 +10,8 @@ data = {
 }
 df = pd.DataFrame(data)
 
+st.title("Explaining Predictions:")
+
 st.title("Relabel new data here:")
 
 # Create a checkbox to show/hide the labeling instances
@@ -36,3 +38,5 @@ with st.expander("Original Data", expanded=False):
 with st.expander("Updated Data", expanded=False):
     st.write("Updated DataFrame:")
     st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+
+st.title("Track Metrics:")
