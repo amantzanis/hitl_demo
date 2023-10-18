@@ -10,6 +10,8 @@ data = {
 }
 df = pd.DataFrame(data)
 
+st.title("Current Model Metrics:")
+
 st.title("Explaining Predictions:")
 
 st.title("Relabel new data here:")
