@@ -6,7 +6,7 @@ data = {
     "Feature1": [i for i in range(20)],
     "Feature2": [i for i in range(20)],
     "Feature3": [i for i in range(20)],
-    "Target": [0, 0, ..., 0]  # Initialize with 0s
+    "Target": [0 for i in range(20)]  # Initialize with 0s
 }
 df = pd.DataFrame(data)
 
