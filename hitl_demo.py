@@ -8,29 +8,31 @@ data = {
     "Feature3": [i for i in range(20)],
     "Target": [0 for i in range(20)]  # Initialize with 0s
 }
-
 df = pd.DataFrame(data)
 
-# Set up the Streamlit layout
 st.title("Data Annotation App")
 
-# Create a two-column layout
-col1, col2 = st.columns([2, 1])
+# Create a container to hold the selection section
+st.write("Instructions: Please label the 'Target' column with 0 or 1.")
+for index, row in df.iterrows():
+    st.write(f"Instance {index + 1}:")
+    label = st.radio(f"Label Target (0 or 1) for instance {index + 1}:", [0, 1])
+    df.at[index, 'Target'] = label
 
-# Use st.expander() for the DataFrame in the first column (col1)
-with col1:
-    st.write("Data to Annotate:")
-    with st.expander("Expand to See Data"):
-        st.dataframe(df)
+# Use CSS to make the DataFrame sticky on the right
+st.markdown(
+    """
+    <style>
+    .css-145kmo2 {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 50px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
-# Create a form to update the target labels in the second column (col2)
-with col2:
-    st.write("Instructions: Please label the 'Target' column with 0 or 1.")
-    for index, row in df.iterrows():
-        st.write(f"Instance {index + 1}:")
-        label = st.radio(f"Label Target (0 or 1) for instance {index + 1}:", [0, 1])
-        df.at[index, 'Target'] = label
-
-# Show the updated DataFrame
-st.write("Updated DataFrame:")
-st.dataframe(df)
+# Display the DataFrame
+st.write("Data to Annotate:")
+st.dataframe(df, height=600)
