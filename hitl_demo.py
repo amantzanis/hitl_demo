@@ -34,11 +34,11 @@ if show_sidebar:
             df.at[index, 'Target'] = label
 
     # Use st.expander to display the original DataFrame
-    with st.expander("Original Data", expanded=True):
+    with st.expander("Original Data", expanded=False):
         st.write("Data to Annotate:")
         st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
     
     # Use st.expander to display the updated DataFrame
-    with st.expander("Updated Data", expanded=True):
+    with st.expander("Updated Data", expanded=False):
         st.write("Updated DataFrame:")
         st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
