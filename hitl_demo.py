@@ -5,6 +5,9 @@ import numpy as np
 import tensorflow as tf
 import shap
 
+# ignore streamlit warnings
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 # define path
 path = os.path.dirname(__file__)
 
