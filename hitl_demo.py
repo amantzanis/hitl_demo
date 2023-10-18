@@ -11,19 +11,25 @@ data = {
 
 df = pd.DataFrame(data)
 
+# Set up the Streamlit layout
 st.title("Data Annotation App")
 
-# Create a button to start the annotation
-start_button = st.button("Start Annotation")
+# Create a two-column layout
+col1, col2 = st.beta_columns([2, 1])
 
-if start_button:
+# Display the DataFrame in the first column (col1)
+with col1:
+    st.write("Data to Annotate:")
+    st.dataframe(df)
+
+# Create a form to update the target labels in the second column (col2)
+with col2:
     st.write("Instructions: Please label the 'Target' column with 0 or 1.")
     for index, row in df.iterrows():
         st.write(f"Instance {index + 1}:")
         label = st.radio(f"Label Target (0 or 1) for instance {index + 1}:", [0, 1])
         df.at[index, 'Target'] = label
-        st.button("Next")  # Create a button to move to the next instance
 
-    # Show the updated DataFrame
-    st.write("Updated DataFrame:")
-    st.dataframe(df)
+# Show the updated DataFrame
+st.write("Updated DataFrame:")
+st.dataframe(df)
