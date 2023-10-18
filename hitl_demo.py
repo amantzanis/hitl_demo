@@ -8,19 +8,19 @@ data = {
     "Feature3": [i for i in range(20)],
     "Target": [0 for i in range(20)]  # Initialize with 0s
 }
-
 df = pd.DataFrame(data)
 
-# Set up the Streamlit layout
 st.title("Data Annotation App")
 
 # Create a two-column layout
 col1, col2 = st.columns([2, 1])
 
-# Display the DataFrame in the first column (col1)
+# Use st.container() for the DataFrame in the first column (col1)
 with col1:
     st.write("Data to Annotate:")
-    st.dataframe(df)
+    container = st.container()
+    with st.expander("Expand to See Data", expanded=True):
+        st.dataframe(df)
 
 # Create a form to update the target labels in the second column (col2)
 with col2:
