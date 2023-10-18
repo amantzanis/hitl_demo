@@ -20,10 +20,12 @@ with st.sidebar:
         label = st.radio(f"Label Target (0 or 1) for instance {index + 1}:", [0, 1])
         df.at[index, 'Target'] = label
 
-# Display the DataFrame in the main content area
-st.write("Data to Annotate:")
-st.dataframe(df)
+# Use st.expander to display the original DataFrame
+with st.expander("Original Data", expanded=True):
+    st.write("Data to Annotate:")
+    st.dataframe(df)
 
-# Show the updated DataFrame
-st.write("Updated DataFrame:")
-st.dataframe(df)
+# Use st.expander to display the updated DataFrame
+with st.expander("Updated Data", expanded=True):
+    st.write("Updated DataFrame:")
+    st.dataframe(df)
