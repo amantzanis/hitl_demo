@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import numpy as np
 import tensorflow as tf
-
+import shap
 
 # define path
 path = os.path.dirname(__file__)
@@ -23,6 +23,8 @@ y_hold = target_data['y_hold']
 # load model
 loaded_model = tf.keras.models.load_model(path +'/diabetes.h5')
 
+explainer = shap.KernelExplainer(loaded_model.predict,X_train)
+shap_values = explainer.shap_values(X_test)
 
 # Create a DataFrame with your 3 features
 data = {
@@ -34,7 +36,7 @@ data = {
 df = pd.DataFrame(data)
 
 st.title("Current Model Metrics:")
-
+st.display(shap.summary_plot(shap_values,X_test,feature_names=['Glucose','BMI','Age'])
 st.title("Explaining Predictions:")
 
 st.title("Relabel new data here:")
