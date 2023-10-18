@@ -13,7 +13,7 @@ df = pd.DataFrame(data)
 st.title("Data Annotation App")
 
 # Create a two-column layout
-col1, col2 = st.beta_columns([2, 1])
+col1, col2 = st.columns([2, 1])
 
 # Display the DataFrame in the first column (col1)
 with col1:
