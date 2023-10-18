@@ -28,6 +28,6 @@ with col2:
         label = st.radio(f"Label Target (0 or 1) for instance {index + 1}:", [0, 1])
         df.at[index, 'Target'] = label
 
-    # Show the updated DataFrame
-    st.write("Updated DataFrame:")
-    st.dataframe(df)
+# Show the updated DataFrame
+st.write("Updated DataFrame:")
+st.dataframe(df)
