@@ -1,5 +1,27 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
+import tensorflow as tf
+
+
+# define path
+path = os.path.dirname(__file__)
+
+# load X arrays
+loaded_data = np.load(path + '/data_arrays.npz')
+X_train = loaded_data['X_train']
+X_test = loaded_data['X_test']
+X_hold = loaded_data['X_hold']
+
+# load y arrays
+target_data = np.load(path + '/target_arrays.npz')
+y_train = loaded_data['y_train']
+y_test = loaded_data['y_test']
+y_hold = loaded_data['y_hold']
+
+# load model
+loaded_model = tf.keras.models.load_model(path +'/diabetes.h5')
+
 
 # Create a DataFrame with your 3 features
 data = {
