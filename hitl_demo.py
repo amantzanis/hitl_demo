@@ -12,14 +12,8 @@ df = pd.DataFrame(data)
 
 st.title("Relabel new data here:")
 
-# Create a button to show the sidebar and labeling instances
-relabel_button = st.button("Relabel")
-
-# Initialize a flag to control visibility
-show_sidebar = False
-
-if relabel_button:
-    show_sidebar = True
+# Create a checkbox to show/hide the labeling instances
+show_sidebar = st.checkbox("Show Labeling Instances")
 
 if show_sidebar:
     # Use st.sidebar for the labeling instances
@@ -33,12 +27,12 @@ if show_sidebar:
                 st.markdown(f'<style>table tr:nth-child({index + 1}) td:nth-child(5){{background-color: blue;}}</style>', unsafe_allow_html=True)
             df.at[index, 'Target'] = label
 
-    # Use st.expander to display the original DataFrame
-    with st.expander("Original Data", expanded=False):
-        st.write("Data to Annotate:")
-        st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
-    
-    # Use st.expander to display the updated DataFrame
-    with st.expander("Updated Data", expanded=False):
-        st.write("Updated DataFrame:")
-        st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+# Use st.expander to display the original DataFrame
+with st.expander("Original Data", expanded=False):
+    st.write("Data to Annotate:")
+    st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+
+# Use st.expander to display the updated DataFrame
+with st.expander("Updated Data", expanded=False):
+    st.write("Updated DataFrame:")
+    st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
