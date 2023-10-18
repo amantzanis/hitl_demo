@@ -10,7 +10,7 @@ data = {
 }
 df = pd.DataFrame(data)
 
-st.title("Data Annotation App")
+st.title("Relabel Data Here:")
 
 # Use st.sidebar for the labeling instances
 with st.sidebar:
