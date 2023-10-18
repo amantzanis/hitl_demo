@@ -36,7 +36,7 @@ data = {
 df = pd.DataFrame(data)
 
 st.title("Current Model Metrics:")
-st.write(shap.summary_plot(shap_values,X_test,feature_names=['Glucose','BMI','Age'])
+    st.display(shap.summary_plot(shap_values,X_test,feature_names=['Glucose','BMI','Age'])
            
 st.title("Explaining Predictions:")
            
