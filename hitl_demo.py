@@ -10,7 +10,7 @@ data = {
 }
 df = pd.DataFrame(data)
 
-st.title("Relabel Data Here:")
+st.title("Data Annotation App")
 
 # Use st.sidebar for the labeling instances
 with st.sidebar:
@@ -18,6 +18,9 @@ with st.sidebar:
     for index, row in df.iterrows():
         st.write(f"Instance {index + 1}:")
         label = st.radio(f"Label Target (0 or 1) for instance {index + 1}:", [0, 1])
+        if df.at[index, 'Target'] != label:
+            # Highlight the updated cell with a different background color
+            st.markdown(f'<style>table td:nth-child({4 + index}){{background-color: yellow;}}</style>', unsafe_allow_html=True)
         df.at[index, 'Target'] = label
 
 # Use st.expander to display the original DataFrame
