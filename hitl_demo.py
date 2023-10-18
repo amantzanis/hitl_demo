@@ -16,9 +16,9 @@ X_hold = loaded_data['X_hold']
 
 # load y arrays
 target_data = np.load(path + '/target_arrays.npz')
-y_train = loaded_data['y_train']
-y_test = loaded_data['y_test']
-y_hold = loaded_data['y_hold']
+y_train = target_data['y_train']
+y_test = target_data['y_test']
+y_hold = target_data['y_hold']
 
 # load model
 loaded_model = tf.keras.models.load_model(path +'/diabetes.h5')
