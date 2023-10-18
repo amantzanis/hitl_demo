@@ -12,23 +12,17 @@ df = pd.DataFrame(data)
 
 st.title("Data Annotation App")
 
-# Create a two-column layout
-col1, col2 = st.columns([2, 1])
-
-# Use st.container() for the DataFrame in the first column (col1)
-with col1:
-    st.write("Data to Annotate:")
-    container = st.container()
-    with st.expander("Expand to See Data", expanded=True):
-        st.dataframe(df)
-
-# Create a form to update the target labels in the second column (col2)
-with col2:
+# Use st.sidebar for the labeling instances
+with st.sidebar:
     st.write("Instructions: Please label the 'Target' column with 0 or 1.")
     for index, row in df.iterrows():
         st.write(f"Instance {index + 1}:")
         label = st.radio(f"Label Target (0 or 1) for instance {index + 1}:", [0, 1])
         df.at[index, 'Target'] = label
+
+# Display the DataFrame in the main content area
+st.write("Data to Annotate:")
+st.dataframe(df)
 
 # Show the updated DataFrame
 st.write("Updated DataFrame:")
