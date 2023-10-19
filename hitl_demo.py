@@ -138,9 +138,9 @@ if show_sidebar:
             
     # progress bar
     if 'history' in locals() and model_retrained:
-    # Update the training progress bar
-    for epoch in range(1, len(history.history['loss']) + 1):
-        training_progress.progress(epoch / len(history.history['loss']))
+        # Update the training progress bar
+        for epoch in range(1, len(history.history['loss']) + 1):
+            training_progress.progress(epoch / len(history.history['loss']))
     
     # Define a function to plot the bar chart
     def plot_accuracy_bar(initial_accuracy, updated_accuracy):
