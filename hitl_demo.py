@@ -41,8 +41,9 @@ df = pd.DataFrame(data)
 st.title("Current Model Metrics:")
            
 st.title("Explaining Predictions:")
-shap.summary_plot(shap_values,X_test,feature_names=['Glucose','BMI','Age'])
-st.pyplot()
+# Load and display a PNG image
+image_path = path + '/mygraph.jpg'
+image = st.image(image_path, use_column_width=True)
 
 st.title("Relabel new data here:")
 
