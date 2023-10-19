@@ -69,7 +69,7 @@ with st.expander("Explain", expanded=False):
     image_path = path + '/mygraph.jpg'
     image = st.image(image_path, use_column_width=True)
 
-st.title("Relabel data here:")
+st.title("Relabel and Retrain:")
 
 # Create a checkbox to show/hide the labeling instances
 show_sidebar = st.checkbox("Show Labeling Instances")
@@ -122,20 +122,19 @@ if show_sidebar:
         st.write("Updated DataFrame:")
         st.markdown(updated_df.to_html(escape=False), unsafe_allow_html=True)
 
-st.title("Retrain:")
-with st.expander("Retrain Model", expanded=False):
-    retrain_button = st.button("Retrain Model")
-    if retrain_button:
-        X = updated_df.drop('Target', axis=1)
-        y = updated_df['Target']
-        # Train the model
-        # Define early stopping
-        es = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-        loaded_model.fit(X, y, epochs=100, batch_size=10, validation_split=0.1, callbacks=[es])
-        model_retrained = True
-        
-    if model_retrained:
-        st.success("Model has been retrained!")
-        st.balloons()
+    with st.expander("Retrain Model", expanded=False):
+        retrain_button = st.button("Retrain Model")
+        if retrain_button:
+            X = updated_df.drop('Target', axis=1)
+            y = updated_df['Target']
+            # Train the model
+            # Define early stopping
+            es = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+            loaded_model.fit(X, y, epochs=100, batch_size=10, validation_split=0.1, callbacks=[es])
+            model_retrained = True
+            
+        if model_retrained:
+            st.success("Model has been retrained!")
+            st.balloons()
            
 st.title("Track Metrics:")
