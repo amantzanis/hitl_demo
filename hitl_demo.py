@@ -19,15 +19,16 @@ background_image = st.image(image_path, use_column_width=False)
 st.write(
     f"""
     <style>
-        #smaller-image {{
+        img {{
             width: 50%; /* Make it 50% smaller in width */
             max-width: none;
             height: auto; /* Maintain aspect ratio */
+            position: absolute; /* Position it absolutely */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
         }}
     </style>
-    <div id="smaller-image">
-        <img src="data:image/jpeg;base64,{background_image.data}">
-    </div>
+    <img src="data:image/jpeg;base64,{background_image.data}">
     """,
     unsafe_allow_html=True,
 )
