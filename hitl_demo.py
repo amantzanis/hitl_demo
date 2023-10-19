@@ -26,24 +26,19 @@ y_hold = target_data['y_hold']
 # load model
 loaded_model = tf.keras.models.load_model(path +'/diabetes.h5')
 
+# load holdout data
+df = pd.read_csv(path + '/holdout.csv'
+
 # explainer = shap.KernelExplainer(loaded_model.predict,X_train)
 # shap_values = explainer.shap_values(X_test)
-
-# Create a DataFrame with your 3 features
-data = {
-    "Feature1": [i for i in range(20)],
-    "Feature2": [i for i in range(20)],
-    "Feature3": [i for i in range(20)],
-    "Target": [0 for i in range(20)]  # Initialize with 0s
-}
-df = pd.DataFrame(data)
 
 st.title("Current Model Metrics:")
            
 st.title("Explaining Predictions:")
-# Load and display a PNG image
-image_path = path + '/mygraph.jpg'
-image = st.image(image_path, use_column_width=True)
+with st.expander("Explain", expanded=False):
+    # Load and display a PNG image
+    image_path = path + '/mygraph.jpg'
+    image = st.image(image_path, use_column_width=True)
 
 st.title("Relabel new data here:")
 
