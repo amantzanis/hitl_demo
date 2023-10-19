@@ -21,11 +21,9 @@ st.write(
     <style>
         .stApp {{
             background-image: url("data:image/jpeg;base64,{background_image.data}");
-            background-size: auto;
+            background-size: 10px;
             background-position: auto;
             background-repeat: no-repeat;
-            width: auto; /* Make it 50% smaller in width */
-            height: auto; /* Maintain aspect ratio */
         }}
     </style>
     """,
