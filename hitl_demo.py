@@ -32,6 +32,8 @@ df = pd.read_csv(path + '/holdout.csv')
 # explainer = shap.KernelExplainer(loaded_model.predict,X_train)
 # shap_values = explainer.shap_values(X_test)
 
+st.title("Human In The Loop Concept Demo")
+
 st.title("Current Model Metrics:")
            
 st.title("Explaining Predictions:")
