@@ -73,6 +73,6 @@ with st.expander("Updated Data", expanded=False):
     st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
 
 st.title("Retrain:")
-with st.expander("Retrain Model", expanded=False):
+# with st.expander("Retrain Model", expanded=False):
            
 st.title("Track Metrics:")
