@@ -3,8 +3,7 @@ import os
 import pandas as pd
 import numpy as np
 import tensorflow as tf
-import shap
-import tensorflow as tf
+import matplotlib.pyplot as plt
 
 # ignore streamlit warnings
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -138,7 +137,20 @@ if show_sidebar:
             st.balloons()
            
 st.title("Track Metrics:")
+
+# Define a function to plot the bar chart
+def plot_accuracy_bar(initial_accuracy, updated_accuracy):
+
+    fig, ax = plt.subplots()
+    metrics = ['Initial Accuracy', 'Updated Accuracy']
+    accuracy_values = [initial_accuracy, updated_accuracy]
+    ax.bar(metrics, accuracy_values)
+    ax.set_ylabel('Accuracy')
+    st.pyplot()
+
 with st.expander("Updated Metrics:", expanded=False):
-           # Evaluate the new_model on the test data
-           loss_new, accuracy_new = loaded_model.evaluate(X_test, y_test)
-           st.write(f"Test Loss: {loss_new:.4f}, Test Accuracy: {accuracy_new:.4f}")
+    # Evaluate the new_model on the test data
+    loss_new, accuracy_new = loaded_model.evaluate(X_test, y_test)
+    st.write(f"Test Loss: {loss_new:.4f}, Test Accuracy: {accuracy_new:.4f}")
+    # Call the function to plot the bar chart
+    plot_accuracy_bar(accuracy, accuracy_new)
