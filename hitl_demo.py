@@ -26,8 +26,8 @@ y_hold = target_data['y_hold']
 # load model
 loaded_model = tf.keras.models.load_model(path +'/diabetes.h5')
 
-explainer = shap.KernelExplainer(loaded_model.predict,X_train)
-shap_values = explainer.shap_values(X_test)
+# explainer = shap.KernelExplainer(loaded_model.predict,X_train)
+# shap_values = explainer.shap_values(X_test)
 
 # Create a DataFrame with your 3 features
 data = {
