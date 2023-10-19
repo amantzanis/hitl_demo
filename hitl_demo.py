@@ -144,17 +144,14 @@ if show_sidebar:
         accuracy_values = [initial_accuracy, updated_accuracy]
         ax.bar(metrics, accuracy_values)
         ax.set_ylabel('Accuracy')
+        
+        # Annotate the bars with percentages
+        for i, v in enumerate(accuracy_values):
+        ax.text(i, v, f'{v:.2%}', ha='center', va='bottom', fontsize=12, color='black')
         st.pyplot()
     
     st.title("Track Metrics:")
     with st.expander("Updated Metrics:", expanded=False):
         # Calculate the updated accuracy after retraining the model
         loss_new, accuracy_new = loaded_model.evaluate(X_test, y_test)
-        st.write(f"Test Loss: {loss_new:.4f}, Test Accuracy: {accuracy_new:.4f}")
-    
-        # Add a button to show the plot
-        show_plot_button = st.button("Show Accuracy Plot")
-    
-        if show_plot_button:
-            # Call the function to plot the bar chart
-            plot_accuracy_bar(accuracy, accuracy_new)
+        plot_accuracy_bar(accuracy, accuracy_new)
