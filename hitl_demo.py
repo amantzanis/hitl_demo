@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 import shap
+import tensorflow as tf
 
 # ignore streamlit warnings
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -71,30 +72,66 @@ st.title("Relabel data here:")
 # Create a checkbox to show/hide the labeling instances
 show_sidebar = st.checkbox("Show Labeling Instances")
 
-if show_sidebar:
-    # Use st.sidebar for the labeling instances
-    with st.sidebar:
-        st.write("Instructions: Please label the 'Target' column with 0 or 1.")
-        target_values = df["Target"].tolist()
-        for index, row in df.iterrows():
-            st.write(f"Instance {index}:")
-            label = st.radio(f"Label Target (0 or 1) for instance {index}:", [0, 1], index=target_values[index])
-            if df.at[index, 'Target'] != label:
-                # Highlight the updated cell with a different background color
-                st.markdown(f'<style>table tr:nth-child({index + 1}) td:nth-child(5){{background-color: blue;}}</style>', unsafe_allow_html=True)
-            df.at[index, 'Target'] = label
+# if show_sidebar:
+#     # Use st.sidebar for the labeling instances
+#     with st.sidebar:
+#         st.write("Instructions: Please label the 'Target' column with 0 or 1.")
+#         target_values = df["Target"].tolist()
+#         for index, row in df.iterrows():
+#             st.write(f"Instance {index}:")
+#             label = st.radio(f"Label Target (0 or 1) for instance {index}:", [0, 1], index=target_values[index])
+#             if df.at[index, 'Target'] != label:
+#                 # Highlight the updated cell with a different background color
+#                 st.markdown(f'<style>table tr:nth-child({index + 1}) td:nth-child(5){{background-color: blue;}}</style>', unsafe_allow_html=True)
+#             df.at[index, 'Target'] = label
 
-# Use st.expander to display the original DataFrame
-with st.expander("Original Data", expanded=False):
-    st.write("Data to Annotate:")
-    st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+# # Use st.expander to display the original DataFrame
+# with st.expander("Original Data", expanded=False):
+#     st.write("Data to Annotate:")
+#     st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
 
-# Use st.expander to display the updated DataFrame
-with st.expander("Updated Data", expanded=False):
-    st.write("Updated DataFrame:")
-    st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+# # Use st.expander to display the updated DataFrame
+# with st.expander("Updated Data", expanded=False):
+#     st.write("Updated DataFrame:")
+#     st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+
+    if show_sidebar:
+        updated_df = df.copy()  # Create a copy of the original DataFrame to hold the updated data
+    
+        # Use st.sidebar for the labeling instances
+        with st.sidebar:
+            st.write("Instructions: Please label the 'Target' column with 0 or 1.")
+            target_values = updated_df["Target"].tolist()
+            for index, row in updated_df.iterrows():
+                st.write(f"Instance {index}:")
+                label = st.radio(f"Label Target (0 or 1) for instance {index}:", [0, 1], index=target_values[index])
+                if updated_df.at[index, 'Target'] != label:
+                    # Highlight the updated cell with a different background color
+                    st.markdown(f'<style>table tr:nth-child({index + 1}) td:nth-child(5){{background-color: blue;}}</style>', unsafe_allow_html=True)
+                updated_df.at[index, 'Target'] = label
+    
+    # Use st.expander to display the original DataFrame
+    with st.expander("Original Data", expanded=False):
+        st.write("Data to Annotate:")
+        st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+    
+    # Use st.expander to display the updated DataFrame
+    with st.expander("Updated Data", expanded=False):
+        st.write("Updated DataFrame:")
+        st.markdown(updated_df.to_html(escape=False), unsafe_allow_html=True)
 
 st.title("Retrain:")
-# with st.expander("Retrain Model", expanded=False):
+with st.expander("Retrain Model", expanded=False):
+    retrain_button = st.button("Retrain Model")
+    if retrain_button:
+    X = df.drop('Target', axis=1)
+    y = df['Target']
+    # Train the model
+    # Define early stopping
+    es = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+    model.fit(X, y, epochs=100, batch_size=10, validation_split=0.1, callbacks=[es])
+    if model_retrained:
+    st.success("Model has been retrained!")
+    st.ballons()
            
 st.title("Track Metrics:")
