@@ -12,7 +12,8 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 path = os.path.dirname(__file__)
 
 # Upload the background image
-background_image = st.image(path + 'sx.png', use_column_width=True, caption='')
+image_path = path + '/sx.png'
+background_image = st.image(image_path, use_column_width=True, caption='')
 
 # Add custom CSS to set the background image
 st.write(
