@@ -26,7 +26,8 @@ st.write(
             background-repeat: no-repeat;
         }}
     </style>
-    """
+    """,
+    unsafe_allow_html=True,
 )
 
 # load X arrays
