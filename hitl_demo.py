@@ -57,7 +57,7 @@ if show_sidebar:
     with st.sidebar:
         st.write("Instructions: Please label the 'Target' column with 0 or 1.")
         for index, row in df.iterrows():
-            st.write(f"Instance {index + 1}:")
+            st.write(f"Instance {index}:")
             label = st.radio(f"Label Target (0 or 1) for instance {index + 1}:", [0, 1])
             if df.at[index, 'Target'] != label:
                 # Highlight the updated cell with a different background color
