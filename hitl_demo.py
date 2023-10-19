@@ -110,15 +110,15 @@ if show_sidebar:
                 st.markdown(f'<style>table tr:nth-child({index + 1}) td:nth-child(5){{background-color: blue;}}</style>', unsafe_allow_html=True)
             updated_df.at[index, 'Target'] = label
 
-# Use st.expander to display the original DataFrame
-with st.expander("Original Data", expanded=False):
-    st.write("Data to Annotate:")
-    st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
-
-# Use st.expander to display the updated DataFrame
-with st.expander("Updated Data", expanded=False):
-    st.write("Updated DataFrame:")
-    st.markdown(updated_df.to_html(escape=False), unsafe_allow_html=True)
+    # Use st.expander to display the original DataFrame
+    with st.expander("Original Data", expanded=False):
+        st.write("Data to Annotate:")
+        st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+    
+    # Use st.expander to display the updated DataFrame
+    with st.expander("Updated Data", expanded=False):
+        st.write("Updated DataFrame:")
+        st.markdown(updated_df.to_html(escape=False), unsafe_allow_html=True)
 
 st.title("Retrain:")
 with st.expander("Retrain Model", expanded=False):
