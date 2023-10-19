@@ -24,8 +24,8 @@ st.write(
             background-size: auto;
             background-position: auto;
             background-repeat: no-repeat;
-            width: auto; /* Make it 50% smaller in width */
-            height: auto; /* Maintain aspect ratio */
+            width: auto;
+            height: auto;
         }}
     </style>
     """,
