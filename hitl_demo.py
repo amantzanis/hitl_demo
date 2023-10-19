@@ -47,7 +47,7 @@ with st.expander("Explain", expanded=False):
     image_path = path + '/mygraph.jpg'
     image = st.image(image_path, use_column_width=True)
 
-st.title("Relabel new data here:")
+st.title("Relabel data here:")
 
 # Create a checkbox to show/hide the labeling instances
 show_sidebar = st.checkbox("Show Labeling Instances")
