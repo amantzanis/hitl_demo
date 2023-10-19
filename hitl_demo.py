@@ -33,7 +33,7 @@ df = pd.read_csv(path + '/holdout.csv')
 # shap_values = explainer.shap_values(X_test)
 
 st.title("Human In The Loop Concept Demo")
-st.write('Simple app to showcase our hitl ideas')
+st.write('Simple app to showcase our hitl ideas built with an open source diabetes dataset.')
 
 st.title("Current Model Metrics:")
            
