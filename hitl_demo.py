@@ -104,12 +104,12 @@ def highlight_rows(row):
 # Use st.expander to display the original DataFrame
 with st.expander("Original Data", expanded=False):
     st.write("Data to Annotate:")
-    st.dataframe(df.style.apply(highlight_rows, axis=1), escape=False)
+    st.dataframe(df.style.apply(highlight_rows, axis=1))
 
 # Use st.expander to display the updated DataFrame
 with st.expander("Updated Data", expanded=False):
     st.write("Updated DataFrame:")
-    st.dataframe(df.style.apply(highlight_rows, axis=1), escape=False)
+    st.dataframe(df.style.apply(highlight_rows, axis=1))
 
 st.title("Retrain:")
 # with st.expander("Retrain Model", expanded=False):
