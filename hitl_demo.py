@@ -135,33 +135,31 @@ if show_sidebar:
         if model_retrained:
             st.success("Model has been retrained!")
             st.balloons()
-           
-st.title("Track Metrics:")
-
-# Define a function to plot the bar chart
-def plot_accuracy_bar(initial_accuracy, updated_accuracy):
-
-    fig, ax = plt.subplots()
-    metrics = ['Initial Accuracy', 'Updated Accuracy']
-    accuracy_values = [initial_accuracy, updated_accuracy]
-    ax.bar(metrics, accuracy_values)
-    ax.set_ylabel('Accuracy')
-    st.pyplot()
-
-st.title("Track Metrics:")
-with st.expander("Updated Metrics:", expanded=False):
-    if model_retrained:
-        # Calculate the updated accuracy after retraining the model
-        loss_new, accuracy_new = loaded_model.evaluate(X_test, y_test)
-    else:
-        accuracy_new = accuracy  # Use the initial accuracy if not retrained
-        loss_new = 0  # Set loss to 0 for display purposes
-
-    st.write(f"Test Loss: {loss_new:.4f}, Test Accuracy: {accuracy_new:.4f}")
-
-    # Add a button to show the plot
-    show_plot_button = st.button("Show Accuracy Plot")
-
-    if show_plot_button:
-        # Call the function to plot the bar chart
-        plot_accuracy_bar(accuracy, accuracy_new)
+    
+    # Define a function to plot the bar chart
+    def plot_accuracy_bar(initial_accuracy, updated_accuracy):
+    
+        fig, ax = plt.subplots()
+        metrics = ['Initial Accuracy', 'Updated Accuracy']
+        accuracy_values = [initial_accuracy, updated_accuracy]
+        ax.bar(metrics, accuracy_values)
+        ax.set_ylabel('Accuracy')
+        st.pyplot()
+    
+    st.title("Track Metrics:")
+    with st.expander("Updated Metrics:", expanded=False):
+        if model_retrained:
+            # Calculate the updated accuracy after retraining the model
+            loss_new, accuracy_new = loaded_model.evaluate(X_test, y_test)
+        else:
+            accuracy_new = accuracy  # Use the initial accuracy if not retrained
+            loss_new = 0  # Set loss to 0 for display purposes
+    
+        st.write(f"Test Loss: {loss_new:.4f}, Test Accuracy: {accuracy_new:.4f}")
+    
+        # Add a button to show the plot
+        show_plot_button = st.button("Show Accuracy Plot")
+    
+        if show_plot_button:
+            # Call the function to plot the bar chart
+            plot_accuracy_bar(accuracy, accuracy_new)
