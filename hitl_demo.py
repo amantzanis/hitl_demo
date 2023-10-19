@@ -13,13 +13,11 @@ path = os.path.dirname(__file__)
 
 # load X arrays
 loaded_data = np.load(path + '/data_arrays.npz')
-X_train = loaded_data['X_train']
 X_test = loaded_data['X_test']
 X_hold = loaded_data['X_hold']
 
 # load y arrays
 target_data = np.load(path + '/target_arrays.npz')
-y_train = target_data['y_train']
 y_test = target_data['y_test']
 y_hold = target_data['y_hold']
 
