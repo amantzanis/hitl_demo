@@ -138,3 +138,7 @@ if show_sidebar:
             st.balloons()
            
 st.title("Track Metrics:")
+with st.expander("Initial Metrics:", expanded=False):
+           # Evaluate the new_model on the test data
+           loss_new, accuracy_new = loaded_model.evaluate(X_test, y_test)
+           st.write(f"Test Loss: {loss_new:.4f}, Test Accuracy: {accuracy_new:.4f}")
