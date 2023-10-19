@@ -10,9 +10,6 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 model_retrained = False
 
-# Define a variable to track the training progress
-training_progress = st.empty()
-
 # define path
 path = os.path.dirname(__file__)
 
@@ -132,18 +129,13 @@ if show_sidebar:
             # Train the model
             # Define early stopping
             es = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-            history = loaded_model.fit(X, y, epochs=100, batch_size=10, validation_split=0.1, callbacks=[es])
+            with st.spinner(text='In progress'):
+                loaded_model.fit(X, y, epochs=100, batch_size=10, validation_split=0.1, callbacks=[es])
             model_retrained = True
             
         if model_retrained:
             st.success("Model has been retrained!")
             st.balloons()
-            
-    # progress bar
-    if 'history' in locals() and model_retrained:
-        # Update the training progress bar
-        for epoch in range(1, len(history.history['loss']) + 1):
-            training_progress.progress(epoch / len(history.history['loss']))
     
     # Define a function to plot the bar chart
     def plot_accuracy_bar(initial_accuracy, updated_accuracy):
