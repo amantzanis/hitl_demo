@@ -95,30 +95,30 @@ show_sidebar = st.checkbox("Show Labeling Instances")
 #     st.write("Updated DataFrame:")
 #     st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
 
-    if show_sidebar:
-        updated_df = df.copy()  # Create a copy of the original DataFrame to hold the updated data
-    
-        # Use st.sidebar for the labeling instances
-        with st.sidebar:
-            st.write("Instructions: Please label the 'Target' column with 0 or 1.")
-            target_values = updated_df["Target"].tolist()
-            for index, row in updated_df.iterrows():
-                st.write(f"Instance {index}:")
-                label = st.radio(f"Label Target (0 or 1) for instance {index}:", [0, 1], index=target_values[index])
-                if updated_df.at[index, 'Target'] != label:
-                    # Highlight the updated cell with a different background color
-                    st.markdown(f'<style>table tr:nth-child({index + 1}) td:nth-child(5){{background-color: blue;}}</style>', unsafe_allow_html=True)
-                updated_df.at[index, 'Target'] = label
-    
-    # Use st.expander to display the original DataFrame
-    with st.expander("Original Data", expanded=False):
-        st.write("Data to Annotate:")
-        st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
-    
-    # Use st.expander to display the updated DataFrame
-    with st.expander("Updated Data", expanded=False):
-        st.write("Updated DataFrame:")
-        st.markdown(updated_df.to_html(escape=False), unsafe_allow_html=True)
+if show_sidebar:
+    updated_df = df.copy()  # Create a copy of the original DataFrame to hold the updated data
+
+    # Use st.sidebar for the labeling instances
+    with st.sidebar:
+        st.write("Instructions: Please label the 'Target' column with 0 or 1.")
+        target_values = updated_df["Target"].tolist()
+        for index, row in updated_df.iterrows():
+            st.write(f"Instance {index}:")
+            label = st.radio(f"Label Target (0 or 1) for instance {index}:", [0, 1], index=target_values[index])
+            if updated_df.at[index, 'Target'] != label:
+                # Highlight the updated cell with a different background color
+                st.markdown(f'<style>table tr:nth-child({index + 1}) td:nth-child(5){{background-color: blue;}}</style>', unsafe_allow_html=True)
+            updated_df.at[index, 'Target'] = label
+
+# Use st.expander to display the original DataFrame
+with st.expander("Original Data", expanded=False):
+    st.write("Data to Annotate:")
+    st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+
+# Use st.expander to display the updated DataFrame
+with st.expander("Updated Data", expanded=False):
+    st.write("Updated DataFrame:")
+    st.markdown(updated_df.to_html(escape=False), unsafe_allow_html=True)
 
 st.title("Retrain:")
 with st.expander("Retrain Model", expanded=False):
