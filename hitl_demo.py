@@ -10,6 +10,9 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 model_retrained = False
 
+# Define a variable to track the training progress
+training_progress = st.empty()
+
 # define path
 path = os.path.dirname(__file__)
 
