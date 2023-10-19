@@ -27,7 +27,7 @@ y_hold = target_data['y_hold']
 loaded_model = tf.keras.models.load_model(path +'/diabetes.h5')
 
 # load holdout data
-df = pd.read_csv(path + '/holdout.csv'
+df = pd.read_csv(path + '/holdout.csv')
 
 # explainer = shap.KernelExplainer(loaded_model.predict,X_train)
 # shap_values = explainer.shap_values(X_test)
