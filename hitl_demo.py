@@ -124,14 +124,14 @@ st.title("Retrain:")
 with st.expander("Retrain Model", expanded=False):
     retrain_button = st.button("Retrain Model")
     if retrain_button:
-    X = df.drop('Target', axis=1)
-    y = df['Target']
-    # Train the model
-    # Define early stopping
-    es = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-    model.fit(X, y, epochs=100, batch_size=10, validation_split=0.1, callbacks=[es])
+        X = df.drop('Target', axis=1)
+        y = df['Target']
+        # Train the model
+        # Define early stopping
+        es = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+        model.fit(X, y, epochs=100, batch_size=10, validation_split=0.1, callbacks=[es])
     if model_retrained:
-    st.success("Model has been retrained!")
-    st.ballons()
+        st.success("Model has been retrained!")
+        st.ballons()
            
 st.title("Track Metrics:")
