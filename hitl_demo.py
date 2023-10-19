@@ -148,13 +148,8 @@ if show_sidebar:
     
     st.title("Track Metrics:")
     with st.expander("Updated Metrics:", expanded=False):
-        if model_retrained:
-            # Calculate the updated accuracy after retraining the model
-            loss_new, accuracy_new = loaded_model.evaluate(X_test, y_test)
-        else:
-            accuracy_new = accuracy  # Use the initial accuracy if not retrained
-            loss_new = 0  # Set loss to 0 for display purposes
-    
+        # Calculate the updated accuracy after retraining the model
+        loss_new, accuracy_new = loaded_model.evaluate(X_test, y_test)
         st.write(f"Test Loss: {loss_new:.4f}, Test Accuracy: {accuracy_new:.4f}")
     
         # Add a button to show the plot
