@@ -9,6 +9,8 @@ import tensorflow as tf
 # ignore streamlit warnings
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+model_retrained = False
+
 # define path
 path = os.path.dirname(__file__)
 
