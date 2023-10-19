@@ -1,2 +1,2 @@
 # hitl_demo
-https://hitldemo-2snkbapa2wedey3hcnrxaf.streamlit.app/
+https://hitldemo-01.streamlit.app/
