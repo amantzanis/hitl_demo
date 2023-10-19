@@ -36,7 +36,11 @@ st.title("Human In The Loop Concept Demo")
 st.write('Simple app to showcase our hitl ideas built with an open source diabetes dataset.')
 
 st.title("Current Model Metrics:")
-           
+with st.expander("Initial Metrics:", expanded=False):
+           # Evaluate the model on the test data
+           loss, accuracy = loaded_model.evaluate(X_test, y_test)
+           st.write(f"Test Loss: {loss:.4f}, Test Accuracy: {accuracy:.4f}")
+
 st.title("Explaining Predictions:")
 with st.expander("Explain", expanded=False):
     # Load and display a PNG image
