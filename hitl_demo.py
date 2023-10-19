@@ -22,7 +22,7 @@ st.write(
         .stApp {{
             background-image: url("data:image/jpeg;base64,{background_image.data}");
             background-size: contain;
-            background-position: auto;
+            background-position: top left;
             background-repeat: no-repeat;
         }}
     </style>
