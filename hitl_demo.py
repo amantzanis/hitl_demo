@@ -19,16 +19,15 @@ background_image = st.image(image_path, use_column_width=False)
 st.write(
     f"""
     <style>
-        img {{
-            width: 50%; /* Make it 50% smaller in width */
-            max-width: none;
+        .stApp {{
+            background-image: url("data:image/jpeg;base64,{background_image.data}");
+            background-size: auto;
+            background-position: auto;
+            background-repeat: no-repeat;
+            width: auto; /* Make it 50% smaller in width */
             height: auto; /* Maintain aspect ratio */
-            position: absolute; /* Position it absolutely */
-            top: 0; /* Align to the top */
-            left: 0; /* Align to the left */
         }}
     </style>
-    <img src="data:image/jpeg;base64,{background_image.data}">
     """,
     unsafe_allow_html=True,
 )
