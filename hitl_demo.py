@@ -153,7 +153,7 @@ with st.expander("Updated Metrics:", expanded=False):
     loss_new, accuracy_new = loaded_model.evaluate(X_test, y_test)
     st.write(f"Test Loss: {loss_new:.4f}, Test Accuracy: {accuracy_new:.4f}")
     # Add a button to show the plot
-    show_plot_button = st.button("Show Accuracy Plot")
+    show_plot_button = st.button("Show Plot")
 
     if show_plot_button:
         # Call the function to plot the bar chart
