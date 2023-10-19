@@ -57,7 +57,7 @@ if show_sidebar:
         target_values = df["Target"].tolist()
         for index, row in df.iterrows():
             st.write(f"Instance {index}:")
-            label = st.radio(f"Label Target (0 or 1) for instance {index + 1}:", [0, 1], index=target_values[index])
+            label = st.radio(f"Label Target (0 or 1) for instance {index}:", [0, 1], index=target_values[index])
             if df.at[index, 'Target'] != label:
                 # Highlight the updated cell with a different background color
                 st.markdown(f'<style>table tr:nth-child({index + 1}) td:nth-child(5){{background-color: blue;}}</style>', unsafe_allow_html=True)
