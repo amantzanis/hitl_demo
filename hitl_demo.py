@@ -11,6 +11,24 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # define path
 path = os.path.dirname(__file__)
 
+# Upload the background image
+background_image = st.image(path + 'sx.png', use_column_width=True, caption='')
+
+# Add custom CSS to set the background image
+st.write(
+    f"""
+    <style>
+        .stApp {{
+            background-image: url("data:image/jpeg;base64,{background_image.data}");
+            background-size: auto;
+            background-position: top left;
+            background-repeat: no-repeat;
+        }}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # load X arrays
 loaded_data = np.load(path + '/data_arrays.npz')
 X_test = loaded_data['X_test']
