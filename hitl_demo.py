@@ -130,8 +130,8 @@ with st.expander("Retrain Model", expanded=False):
         # Define early stopping
         es = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
         loaded_model.fit(X, y, epochs=100, batch_size=10, validation_split=0.1, callbacks=[es])
-    if model_retrained:
-        st.success("Model has been retrained!")
+    # if model_retrained:
+    #     st.success("Model has been retrained!")
         st.balloons()
            
 st.title("Track Metrics:")
