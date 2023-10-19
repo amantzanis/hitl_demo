@@ -108,7 +108,7 @@ if show_sidebar:
             label = st.radio(f"Label Target (0 or 1) for instance {index}:", [0, 1], index=target_values[index])
             if df.at[index, 'Target'] != label:
                 # Highlight the updated cell with a different background color
-                st.markdown(f'<style>table tr:nth-child({index + 1}) td:nth-child(5){{background-color: blue;}}</style>', unsafe_allow_html=True)
+                st.markdown(f'<style>table tr:nth-child({index + 1}) td:nth-child(5){{background-color: light-blue;}}</style>', unsafe_allow_html=True)
             updated_df.at[index, 'Target'] = label
 
     # Use st.expander to display the original DataFrame
