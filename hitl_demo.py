@@ -13,7 +13,7 @@ path = os.path.dirname(__file__)
 
 # Upload the background image
 image_path = path + '/sx.png'
-background_image = st.image(image_path, use_column_width=True, caption='')
+background_image = st.image(image_path, use_column_width=False)
 
 # Add custom CSS to set the background image
 st.write(
