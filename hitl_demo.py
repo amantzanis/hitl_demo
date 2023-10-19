@@ -21,8 +21,8 @@ st.write(
     <style>
         .stApp {{
             background-image: url("data:image/jpeg;base64,{background_image.data}");
-            background-size: 50% auto;
-            background-position: top left;
+            background-size: auto;
+            background-position: auto;
             background-repeat: no-repeat;
             width: 50%; /* Make it 50% smaller in width */
             height: auto; /* Maintain aspect ratio */
