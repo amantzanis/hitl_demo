@@ -119,7 +119,7 @@ if show_sidebar:
             st.balloons()
     
     # Define a function to plot the bar chart
-    def plot_accuracy_bar(initial_accuracy, updated_accuracy):
+    def plot_accuracy_bar(initial_accuracy, updated_accuracy_w, updated_accuracy_w_hf):
     
         fig, ax = plt.subplots()
         metrics = ['Initial Accuracy','Updated Accuracy w/o Human Feedback', 'Updated Accuracy w/ Human Feedback']
