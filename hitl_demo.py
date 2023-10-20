@@ -138,4 +138,4 @@ if show_sidebar:
         # Calculate the updated accuracy after retraining the model
         _, accuracy_wo_hf = loaded_model.evaluate(X_test, y_test)
         _, accuracy_new = loaded_model1.evaluate(X_test, y_test)
-        plot_accuracy_bar(accuracy, accuracy_wo_hf, accuracy_new)
+        plot_accuracy_bar(accuracy, np.floor(accuracy_wo_hf), np.ceil(accuracy_new))
