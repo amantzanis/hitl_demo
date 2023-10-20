@@ -130,7 +130,7 @@ if show_sidebar:
         
         # Annotate the bars with percentages
         for i, v in enumerate(accuracy_values):
-            ax.text(i, v - 0.03, f'{v:.2%}', ha='center', va='bottom', fontsize=12, color='white')
+            ax.text(i, v - 0.1, f'{v:.2%}', ha='center', va='bottom', fontsize=12, color='white')
         st.pyplot()
     
     st.title("Track Metrics:")
