@@ -126,7 +126,7 @@ if show_sidebar:
         accuracy_values = [initial_accuracy, accuracy_wo_hf, accuracy_new]
         ax.bar(metrics, accuracy_values)
         ax.set_ylabel('Accuracy')
-        ax.tick_params(axis='x', rotation=45, labelsize = 10)
+        ax.tick_params(axis='x', rotation=45, labelsize = 9)
         
         # Annotate the bars with percentages
         for i, v in enumerate(accuracy_values):
