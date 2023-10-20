@@ -122,7 +122,7 @@ if show_sidebar:
     def plot_accuracy_bar(initial_accuracy, updated_accuracy_w, updated_accuracy_w_hf):
     
         fig, ax = plt.subplots()
-        metrics = ['Initial Accuracy','without Human Feedback', 'with Human Feedback']
+        metrics = ['Initial Accuracy','updated without Human Feedback', 'updated with with Human Feedback']
         accuracy_values = [initial_accuracy, accuracy_wo_hf, accuracy_new]
         ax.bar(metrics, accuracy_values)
         ax.set_ylabel('Accuracy')
