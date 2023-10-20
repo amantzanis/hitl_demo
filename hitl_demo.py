@@ -123,7 +123,7 @@ if show_sidebar:
     
         fig, ax = plt.subplots()
         metrics = ['Initial Accuracy','Updated Accuracy w/o Human Feedback', 'Updated Accuracy w/ Human Feedback']
-        accuracy_values = [initial_accuracy, updated_accuracy_w/o_hf, updated_accuracy_w_hf]
+        accuracy_values = [initial_accuracy, updated_accuracy_w_o_hf, updated_accuracy_w_hf]
         ax.bar(metrics, accuracy_values)
         ax.set_ylabel('Accuracy')
         
