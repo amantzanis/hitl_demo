@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 # ignore streamlit warnings
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+# init global variable model_retrained
 model_retrained = False
 
 # define path
@@ -44,14 +45,14 @@ target_data = np.load(path + '/target_arrays.npz')
 y_test = target_data['y_test']
 y_hold = target_data['y_hold']
 
-# load model
+# load model once for predictions without human feedback
 loaded_model = tf.keras.models.load_model(path +'/diabetes.h5')
+
+# load model once more for predictions with human feedback
+loaded_model1 = tf.keras.models.load_model(path +'/diabetes.h5')
 
 # load holdout data
 df = pd.read_csv(path + '/holdout.csv')
-
-# explainer = shap.KernelExplainer(loaded_model.predict,X_train)
-# shap_values = explainer.shap_values(X_test)
 
 st.title("Human In The Loop Concept Demo")
 st.write('Simple app to showcase our hitl ideas built with an open source diabetes dataset.')
@@ -101,13 +102,16 @@ if show_sidebar:
     with st.expander("Retrain Model", expanded=False):
         retrain_button = st.button("Retrain Model")
         if retrain_button:
-            X = updated_df.drop('Target', axis=1)
-            y = updated_df['Target']
+            X = df.drop('Target', axis=1)
+            y = df['Target']
+            X1 = updated_df.drop('Target', axis=1)
+            y1 = updated_df['Target']
             # Train the model
             # Define early stopping
             es = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
             with st.spinner(text='In progress'):
                 loaded_model.fit(X, y, epochs=100, batch_size=10, validation_split=0.1, callbacks=[es])
+                loaded_model1.fit(X1, y1, epochs=100, batch_size=10, validation_split=0.1, callbacks=[es])
             model_retrained = True
             
         if model_retrained:
@@ -118,8 +122,8 @@ if show_sidebar:
     def plot_accuracy_bar(initial_accuracy, updated_accuracy):
     
         fig, ax = plt.subplots()
-        metrics = ['Initial Accuracy', 'Updated Accuracy']
-        accuracy_values = [initial_accuracy, updated_accuracy]
+        metrics = ['Initial Accuracy','Updated Accuracy w/o Human Feedback', 'Updated Accuracy w/ Human Feedback']
+        accuracy_values = [initial_accuracy, updated_accuracy_w/o_hf, updated_accuracy_w_hf]
         ax.bar(metrics, accuracy_values)
         ax.set_ylabel('Accuracy')
         
@@ -131,5 +135,6 @@ if show_sidebar:
     st.title("Track Metrics:")
     with st.expander("Updated Metrics:", expanded=False):
         # Calculate the updated accuracy after retraining the model
-        loss_new, accuracy_new = loaded_model.evaluate(X_test, y_test)
-        plot_accuracy_bar(accuracy, accuracy_new)
+        _, accuracy_wo_hf = loaded_model.evaluate(X_test, y_test)
+        _, accuracy_new = loaded_model1.evaluate(X_test, y_test)
+        plot_accuracy_bar(accuracy, accuracy_wo_hf, accuracy_new)
