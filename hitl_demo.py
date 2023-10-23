@@ -136,6 +136,10 @@ if show_sidebar:
     st.title("Track Metrics:")
     with st.expander("Updated Metrics:", expanded=False):
         # Calculate the updated accuracy after retraining the model
-        _, accuracy_wo_hf = loaded_model.evaluate(X_test, y_test)
-        _, accuracy_new = loaded_model1.evaluate(X_test, y_test)
-        plot_accuracy_bar(accuracy, np.floor(accuracy_wo_hf), np.ceil(accuracy_new))
+        if df.equals(updated_df):
+            _, accuracy_wo_hf = loaded_model.evaluate(X_test, y_test)
+            accuracy_new = accuracy_wo_hf
+        else:
+            _, accuracy_wo_hf = loaded_model.evaluate(X_test, y_test)
+            _, accuracy_new = loaded_model1.evaluate(X_test, y_test)
+        plot_accuracy_bar(accuracy, accuracy_wo_hf, accuracy_new)
