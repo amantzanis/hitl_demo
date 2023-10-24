@@ -144,3 +144,22 @@ if show_sidebar:
             _, accuracy_new = loaded_model1.evaluate(X_test, y_test)
         plot_accuracy_bar(accuracy, accuracy_wo_hf, accuracy_new)
 
+    st.title("Choose a Model to Save:")
+    selected_model = st.radio("Select a Model to Save", ["Initial Model", "Retrained Model without Human Feedback", "Retrained Model with Human Feedback"])
+    
+    if st.button("Save Selected Model"):
+        if selected_model == "Initial Model":
+            # Save the initial model
+            loaded_model.save(path + '/selected_model.h5')
+            st.success("Initial Model saved!")
+        elif selected_model == "Retrained Model without Human Feedback":
+            # Save the retrained model without human feedback
+            loaded_model.save(path + '/selected_model.h5')
+            st.success("Retrained Model without Human Feedback saved!")
+        elif selected_model == "Retrained Model with Human Feedback":
+            # Save the retrained model with human feedback
+            loaded_model1.save(path + '/selected_model.h5')
+            st.success("Retrained Model with Human Feedback saved!")
+    
+    st.stop()  # Stop script execution to prevent a page reload
+
