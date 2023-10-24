@@ -159,3 +159,6 @@ if show_sidebar:
             elif model_choice == "Retrained Model with Human Feedback":
                 st.write("You have chosen to keep the retrained model with human feedback.")
                 # Add code here to save the retrained model with human feedback if needed.
+            else:
+                st.write("Make your selection.")
+
