@@ -150,14 +150,12 @@ if show_sidebar:
         # Create buttons to choose which model to keep
         if model_retrained:
             if st.button("Original Model"):
-                st.write("You have chosen to keep the original model.")
+                st.success("You have chosen to keep the original model.")
                 # Add code here to save the original model if needed.
             if st.button("Retrained Model"):
-                st.write("You have chosen to keep the retrained model without human feedback.")
+                st.success("You have chosen to keep the retrained model without human feedback.")
                 # Add code here to save the retrained model without human feedback if needed.
             if st.button("Retrained Model with Human Feedback"):
-                st.write("You have chosen to keep the retrained model with human feedback.")
+                st.success("You have chosen to keep the retrained model with human feedback.")
                 # Add code here to save the retrained model with human feedback if needed.
-        else:
-            st.warning("Please retrain the model before choosing which one to keep.")
 
