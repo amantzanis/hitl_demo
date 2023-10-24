@@ -145,13 +145,12 @@ if show_sidebar:
         plot_accuracy_bar(accuracy, accuracy_wo_hf, accuracy_new)
 
         if model_retrained:
-            if st.button("Save Selected Model"):
-                if selected_model == "Initial Model":
-                    # Save the initial model
-                    st.success("Initial Model saved!")
-                elif selected_model == "Retrained Model without Human Feedback":
-                    # Save the retrained model without human feedback
-                    st.success("Retrained Model without Human Feedback saved!")
-                elif selected_model == "Retrained Model with Human Feedback":
-                    # Save the retrained model with human feedback
-                    st.success("Retrained Model with Human Feedback saved!")
+            if selected_model == "Initial Model":
+                # Save the initial model
+                st.success("Initial Model saved!")
+            elif selected_model == "Retrained Model without Human Feedback":
+                # Save the retrained model without human feedback
+                st.success("Retrained Model without Human Feedback saved!")
+            elif selected_model == "Retrained Model with Human Feedback":
+                # Save the retrained model with human feedback
+                st.success("Retrained Model with Human Feedback saved!")
