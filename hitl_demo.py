@@ -148,7 +148,7 @@ if show_sidebar:
     with st.expander("Choose a model:", expanded=False):
         # Create buttons to choose which model to keep
         if model_retrained:
-            model_choice = st.radio("Choose a Model to Keep:", ["Original Model", "Retrained Model", "Retrained Model with Human Feedback"])
+            model_choice = st.radio("Choose a Model to Keep:", [None, "Original Model", "Retrained Model", "Retrained Model with Human Feedback"])
         
             if model_choice == "Original Model":
                 st.write("You have chosen to keep the original model.")
