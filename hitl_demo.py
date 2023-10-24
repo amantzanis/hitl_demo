@@ -145,7 +145,7 @@ if show_sidebar:
         plot_accuracy_bar(accuracy, accuracy_wo_hf, accuracy_new)
 
     st.title("Choose a Model to Save:")
-    selected_model = st.radio(None, ["Initial Model", "Retrained Model without Human Feedback", "Retrained Model with Human Feedback"])
+    selected_model = st.radio("Choose a model:", ["Initial Model", "Retrained Model without Human Feedback", "Retrained Model with Human Feedback"])
     
     if st.button("Save Selected Model"):
         if selected_model == "Initial Model":
