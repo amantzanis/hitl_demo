@@ -148,7 +148,6 @@ if show_sidebar:
     st.title("Update Model:")
     with st.expander("Choose a model:", expanded=False):
         # Create buttons to choose which model to keep
-        if model_retrained:
             if st.button("Original Model"):
                 st.success("You have chosen to keep the original model.")
                 # Add code here to save the original model if needed.
