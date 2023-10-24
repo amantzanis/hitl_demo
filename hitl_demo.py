@@ -144,19 +144,3 @@ if show_sidebar:
             _, accuracy_new = loaded_model1.evaluate(X_test, y_test)
         plot_accuracy_bar(accuracy, accuracy_wo_hf, accuracy_new)
 
-
-    # st.title("Update Model:")
-    # with st.expander("Choose a model:", expanded=False):
-    #     # Create buttons to choose which model to keep
-    if model_retrained:
-        st.write("Choose a model:")
-        if st.button("Original Model"):
-            st.success("You have chosen to keep the original model.")
-            # Add code here to save the original model if needed.
-        if st.button("Retrained Model"):
-            st.success("You have chosen to keep the retrained model without human feedback.")
-            # Add code here to save the retrained model without human feedback if needed.
-        if st.button("Retrained Model with Human Feedback"):
-            st.success("You have chosen to keep the retrained model with human feedback.")
-            # Add code here to save the retrained model with human feedback if needed.
-
