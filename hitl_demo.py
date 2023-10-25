@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
-# from imblearn.over_sampling import SMOTE
+from imblearn.over_sampling import SMOTE
 
 # ignore streamlit warnings
 st.set_option('deprecation.showPyplotGlobalUse', False)
