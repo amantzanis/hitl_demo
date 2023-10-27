@@ -124,7 +124,7 @@ if show_sidebar:
     
         fig, ax = plt.subplots()
         metrics = ['Initial Accuracy','without Human Feedback', 'with Human Feedback']
-        accuracy_values = [initial_accuracy, accuracy_wo_hf, accuracy_new]
+        accuracy_values = [initial_accuracy, updated_accuracy_w, updated_accuracy_w_hf]
         ax.bar(metrics, accuracy_values)
         ax.set_ylabel('Accuracy')
         ax.tick_params(axis='x', rotation=45, labelsize = 9)
@@ -144,7 +144,7 @@ if show_sidebar:
             _, accuracy_wo_hf = loaded_model.evaluate(X_test, y_test)
             _, accuracy_new = loaded_model1.evaluate(X_test, y_test)
             
-        plot_accuracy_bar(accuracy, accuracy + 0.05, accuracy + 0.09)
+        plot_accuracy_bar(accuracy, accuracy_wo_hf, accuracy_new)
 
         if st.button("Keep Initial Model"):
             st.success("Initial model saved successfully!")
