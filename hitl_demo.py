@@ -140,12 +140,11 @@ if show_sidebar:
         if df.equals(updated_df):
             _, accuracy_wo_hf = loaded_model.evaluate(X_test, y_test)
             accuracy_new = accuracy_wo_hf
-            accuracy_wo = accuracy_wo_hf - 0.05 * accuracy_wo_hf
         else:
             _, accuracy_wo_hf = loaded_model.evaluate(X_test, y_test)
             _, accuracy_new = loaded_model1.evaluate(X_test, y_test)
             
-        plot_accuracy_bar(accuracy, accuracy_wo, accuracy_new)
+        plot_accuracy_bar(accuracy, accuracy_wo_hf, accuracy_new)
 
         if st.button("Keep Initial Model"):
             st.success("Initial model saved successfully!")
