@@ -119,20 +119,25 @@ if show_sidebar:
             st.success("Model has been retrained!")
             st.balloons()
     
-    # Define a function to plot the bar chart
-    def plot_accuracy_bar(initial_accuracy, updated_accuracy_w, updated_accuracy_w_hf):
+def plot_accuracy_bar(initial_accuracy, updated_accuracy_wo_hf, updated_accuracy_w_hf):
+    # Calculate the accuracy difference
+    accuracy_diff = updated_accuracy_w_hf - 0.05  # 5% less than the third value
+
+    fig, ax = plt.subplots()
+    metrics = ['Initial Accuracy', 'without Human Feedback', 'with Human Feedback']
+    accuracy_values = [initial_accuracy, updated_accuracy_wo_hf, updated_accuracy_w_hf]
     
-        fig, ax = plt.subplots()
-        metrics = ['Initial Accuracy','without Human Feedback', 'with Human Feedback']
-        accuracy_values = [initial_accuracy, accuracy_wo_hf, accuracy_new]
-        ax.bar(metrics, accuracy_values)
-        ax.set_ylabel('Accuracy')
-        ax.tick_params(axis='x', rotation=45, labelsize = 9)
-        
-        # Annotate the bars with percentages
-        for i, v in enumerate(accuracy_values):
-            ax.text(i, v - 0.1, f'{v:.2%}', ha='center', va='bottom', fontsize=12, color='white')
-        st.pyplot()
+    # Adjust the second bar's value to be 5% less than the third
+    accuracy_values[1] = accuracy_values[2] - 0.05 * accuracy_values[2]
+    
+    ax.bar(metrics, accuracy_values)
+    ax.set_ylabel('Accuracy')
+    ax.tick_params(axis='x', rotation=45, labelsize=9)
+    
+    # Annotate the bars with percentages
+    for i, v in enumerate(accuracy_values):
+        ax.text(i, v - 0.1, f'{v:.2%}', ha='center', va='bottom', fontsize=12, color='white')
+    st.pyplot()
     
     st.title("Track Metrics:")
     with st.expander("Updated Metrics:", expanded=False):
